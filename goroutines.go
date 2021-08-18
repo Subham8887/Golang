@@ -1,17 +1,17 @@
 package main
 import(
 	"fmt"
-	"time"
+	// "time"
 )
 
 func main(){
 	go count("sheep")
-	go count("fish")
+	count("fish")
 }
 
 func count(thing string){
 	for i:=1;true;i++{
 		fmt.Println(i,thing)
-		time.Sleep(time.Millisecond*500)
+		// time.Sleep(time.Millisecond*500)
 	}
 }

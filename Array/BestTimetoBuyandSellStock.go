@@ -1,36 +1,23 @@
 package main
 import (
 	"fmt"
-	// "math"
+	"math"
 )
-func Max(x,y int) int{
-	if x>y {
-		return x
-	} else {
-		return y
-	} 
-}
-
-func Abs(x int) int{
-	if x<0{
-		return -1*x
-	}
-	return x
-}
-
 func maxProfit(prices []int) int {
 	l:=len(prices)
-	m:=0
-    for i:=0;i<l-1;i++{
-		for j:=i+1;j<l;j++{
-			m=Max(m,Abs(prices[i]-prices[j]))
-		}
+	minval:=math.MaxInt32
+	maxprofit:=0
+    for i:=0;i<l;i++{
+		if minval>prices[i]{
+			minval=prices[i]
+		} else if prices[i]-minval>maxprofit {
+			maxprofit=prices[i]-minval
+		} 
 	}
-	return m
+	return maxprofit
 }
-
 func main(){
-	arr:=[]int{7,1,5,3,6,4}
+	arr:=[]int{1,2}
 	fmt.Println(maxProfit(arr))
 }
 
